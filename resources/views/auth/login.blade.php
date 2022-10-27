@@ -62,7 +62,16 @@
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
-
+                  @if(Session::has('message'))
+                    <div class="row">
+                     <div class="col-lg-12">
+                           <div class="alert {{ Session::get('alert-class', 'alert-info') }}">
+                                 <button type="button" class="close" data-dismiss="alert">×</button>
+                                 {!! Session::get('message') !!}
+                           </div>
+                        </div>
+                    </div>
+                  @endif
                   <form method="POST" action="{{ route('login') }}" class="row g-3 needs-validation">
                     @csrf
                     <div class="col-12">

@@ -93,12 +93,12 @@
       </a>
       <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="forms-elements.html">
+          <a href="{{ route('photo_galleries.create') }}">
             <i class="bi bi-circle"></i><span>Add New Photo Gallery</span>
           </a>
         </li>
         <li>
-          <a href="forms-layouts.html">
+          <a href="{{ route('photo_galleries.index') }}">
             <i class="bi bi-circle"></i><span>View All Photo Gallery</span>
           </a>
         </li>

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>{{ config('app.name', 'AFS Borjhar') }} : Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -25,8 +25,9 @@
   <link href="{{ asset('assets/admin/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/admin/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/admin/vendor/simple-datatables/style.css') }}" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
+  @yield('pageCss')
 </head>
 
 <body>
@@ -51,17 +52,27 @@
   @include('layouts.admin.sidebar')
 
   <main id="main" class="main">
+    @if(Session::has('message'))
+      <div class="row">
+       <div class="col-lg-12">
+             <div class="alert {{ Session::get('alert-class', 'alert-info') }}">
+                   <button type="button" class="close" data-dismiss="alert">×</button>
+                   {!! Session::get('message') !!}
+             </div>
+          </div>
+      </div>
+    @endif
     @yield('main_content')
   </main>
 
-  <footer id="footer" class="footer">
+  <!-- <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
       Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
-  </footer><!-- End Footer -->
+  </footer>End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -69,7 +80,7 @@
   <!-- Vendor JS Files -->
   <script src="{{ asset('assets/admin/vendor/apexcharts/apexcharts.min.js') }}"></script>
   <script src="{{ asset('assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  
+  @yield('pageJs')
 </body>
 
 </html>
